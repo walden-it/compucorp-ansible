@@ -1,0 +1,30 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides: php-fpm
+# Required-Start: $remote_fs $syslog
+# Required-Stop: $remote_fs $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Description: This file starts and stops PHP-FPM
+# 
+### END INIT INFO
+ 
+PHP_DIR={{php_path}}
+ 
+case "$1" in
+ start)
+   $PHP_DIR/sbin/php-fpm
+   ;;
+ stop)
+   pkill php-fpm
+   ;;
+ restart)
+   pkill php-fpm
+   sleep 5
+   $PHP_DIR/sbin/php-fpm
+   ;;
+ *)
+   echo "Usage: php-fpm {start|stop|restart}" >&2
+   exit 3
+   ;;
+esac

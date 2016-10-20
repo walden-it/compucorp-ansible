@@ -1,0 +1,44 @@
+---
+- name: Install dependencies
+  apt: name={{item}} state=installed
+  with_items:
+       - git
+       - drush
+       - python-dev
+       - libmysqlclient-dev
+       - python-pip
+       - make
+       - libfcgi-dev
+       - libfcgi0ldbl
+       - libjpeg62-dbg
+       - libmcrypt-dev
+       - libssl-dev
+       - libbz2-dev
+       - libjpeg-dev
+       - libfreetype6-dev
+       - libpng12-dev
+       - libxpm-dev
+       - libxml2-dev
+       - libpcre3-dev
+       - libbz2-dev
+       - libcurl4-openssl-dev
+       - libjpeg-dev
+       - libpng12-dev
+       - libxpm-dev
+       - libfreetype6-dev
+       - libmysqlclient-dev
+       - libt1-dev
+       - libgd2-xpm-dev
+       - libgmp-dev
+       - libsasl2-dev
+       - libmhash-dev
+       - unixodbc-dev
+       - freetds-dev
+       - libpspell-dev
+       - libsnmp-dev
+       - libtidy-dev
+       - libxslt1-dev
+       - libmcrypt-dev
+       - libdb5.3-dev
+
+

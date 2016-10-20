@@ -1,0 +1,37 @@
+---
+- name: clone site git repo
+  git: repo={{repo}} dest=/var/www/compucorp
+
+- name: create drupal database 
+  mysql_db: name="{{drupal_db}}" state=present
+
+- name: drupal db import 
+  mysql_db: name="{{drupal_db}}" state=import target="/var/www/compucorp/sql/{{drupal_db}}.sql.gz" login_user=root login_password="{{mysql_root_password}}"
+
+- name: create civicrm database 
+  mysql_db: name="{{civicrm_db}}" state=present
+
+- name: civicrm db import
+  mysql_db: name="{{civicrm_db}}" state=import target="/var/www/compucorp/sql/{{civicrm_db}}.sql.gz" login_user=root login_password="{{mysql_root_password}}"
+
+- name: Set user privileges (drupal)
+  mysql_user:
+    user={{drupaluser}}
+    password={{drupalpassword}}
+    state=present
+    append_privs=yes
+    priv={{ item }}
+  with_items:
+    - '{{drupal_db}}.*:ALL'
+    - '{{civicrm_db}}.*:SELECT'
+
+- name: Set user privileges (civicrm)
+  mysql_user:
+    user={{civicrmuser}}
+    password={{civicrmpassword}}
+    state=present
+    append_privs=yes
+    priv={{ item }}
+  with_items:
+    - '{{civicrm_db}}.*:ALL'
+

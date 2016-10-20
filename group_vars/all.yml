@@ -1,0 +1,24 @@
+---
+hostname_name: test
+hostname_domain: compucorp.com
+
+server_hostname: test.compucorp.com
+
+php_fpm_port: 9000
+document_root: /var/www/compucorp/htdocs
+
+php_version: 5.5.38
+php_download_url: http://php.net/distributions/php-5.5.38.tar.bz2
+php_path: /opt/PHP-5.5
+php_fpm_user: www-data
+php_fpm_group: www-data
+
+mysql_packages:
+  - mariadb-client
+  - mariadb-server
+  - python-mysqldb
+
+drupal_db: drupal
+civicrm_db: civicrm
+
+repo: https://github.com/walden-it/compucorp.git

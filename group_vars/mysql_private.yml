@@ -1,0 +1,7 @@
+mysql_root_password: sarasa12345 
+drupaluser: drupaluser
+drupalpassword: drupalpassword
+drupal_db: drupal
+civicrm_db: civicrm
+civicrmuser: civicrm
+civicrmpassword: civicrmpassword
