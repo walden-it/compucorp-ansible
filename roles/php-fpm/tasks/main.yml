@@ -27,7 +27,9 @@
 
 - name: php-fpm init file
   template: src=init dest=/etc/init.d/php-fpm mode=755
-  notify: start php-fpm
 
 - name: php-fpm init (activate)
   command: update-rc.d php-fpm defaults
+
+- name: start php-fpm
+  service: name=php-fpm state=started enabled=yes

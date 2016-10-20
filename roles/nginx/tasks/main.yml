@@ -2,10 +2,6 @@
 - name: Install nginx
   apt: pkg=nginx state=installed update_cache=true
 
-- name: Copy nginx configuration
-  template: src=default dest=/etc/nginx/sites-available/default
-  notify: restart nginx
-
 - name: Creates SSL directory
   file: path=/etc/nginx/ssl state=directory
 
@@ -15,3 +11,6 @@
 - name: Copy ssl key
   copy: src=server.key dest=/etc/nginx/ssl/{{server_hostname}}.key
 
+- name: Copy nginx configuration
+  template: src=default dest=/etc/nginx/sites-available/default
+  notify: restart nginx
