@@ -1,0 +1,39 @@
+--- 
+- name: create build directory
+  file: path=/opt/build state=directory mode=0775
+
+- name: download openSSH {{openssh_version}}
+  get_url:
+    url: "{{ openssh_url }}"
+    dest: /opt/build/openssh-{{ openssh_version }}.tar.gz
+
+- name: uncompress openssh 
+  unarchive: src=/opt/build/openssh-{{ openssh_version }}.tar.gz dest=/opt/build/  remote_src=yes
+
+- name: configure openssh
+  shell: /opt/build/openssh-{{openssh_version}}/configure --prefix={{openssh_path}} --exec-prefix={{openssh_path}} chdir=/opt/build/openssh-{{openssh_version}}
+
+- name: compile openssh
+  command: make chdir=/opt/build/openssh-{{openssh_version}}
+
+- name: install openssh
+  command: make install chdir=/opt/build/openssh-{{openssh_version}}
+
+- name: openssh configuration
+  template: src=sshd_config dest={{openssh_path}}/etc/sshd_config
+
+- name: openssh init file
+  template: src=init dest=/etc/init.d/ssh mode=755
+
+- name: openssh init config
+  template: src=ssh.conf dest=/etc/init/ssh.conf mode=755
+
+- name: openssh init (activate)
+  command: update-rc.d ssh defaults
+
+- name: unlock ubuntu user
+  command: usermod -p '*' ubuntu
+
+#- name: restart openssh
+#  service: name=ssh state=restarted enabled=yes
+

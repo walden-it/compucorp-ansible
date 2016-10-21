@@ -15,11 +15,12 @@
  
   roles: 
    - hostname
-   - dependencies
-   - nginx
-   - php-fpm
-   - geerlingguy.mysql
-   - site
+   - openssh
+   #- dependencies
+   #- nginx
+   #- php-fpm
+   #- geerlingguy.mysql
+   #- site
 
   #tasks:
   #  - hostname: {{server_hostname}}

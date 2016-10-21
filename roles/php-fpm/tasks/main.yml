@@ -1,35 +1,33 @@
 --- 
 - name: create build directory
-  file: path=/opt/build2 state=directory mode=0775
+  file: path=/opt/build state=directory mode=0775
 
 - name: download PHP {{php_version}}
   get_url:
     url: "{{ php_download_url }}"
-    dest: /opt/build2/php-{{ php_version }}.tar.bz2
+    dest: /opt/build/php-{{ php_version }}.tar.bz2
 
 - name: uncompress php
-  unarchive: src=/opt/build2/php-{{php_version}}.tar.bz2 dest=/opt/build2/  remote_src=yes
+  unarchive: src=/opt/build/php-{{php_version}}.tar.bz2 dest=/opt/build/  remote_src=yes
 
 - name: copy configure script
-  template: src=configure.sh dest=/opt/build2/php-{{php_version}}/configure.sh mode=755
+  template: src=configure.sh dest=/opt/build/php-{{php_version}}/configure.sh mode=755
 
 - name: configure php
-  shell: /opt/build2/php-{{php_version}}/configure.sh chdir=/opt/build2/php-{{php_version}}
+  shell: /opt/build/php-{{php_version}}/configure.sh chdir=/opt/build/php-{{php_version}}
 
 - name: compile php
-  command: make chdir=/opt/build2/php-{{php_version}}
+  command: make chdir=/opt/build/php-{{php_version}}
 
 - name: install php
-  command: make install chdir=/opt/build2/php-{{php_version}}
+  command: make install chdir=/opt/build/php-{{php_version}}
 
 - name: php-fpm config file
   command: cp {{php_path}}/etc/php-fpm.conf.default {{php_path}}/etc/php-fpm.conf
 
 - name: php-fpm init file
   template: src=init dest=/etc/init.d/php-fpm mode=755
+  notify: restart php-fpm
 
 - name: php-fpm init (activate)
   command: update-rc.d php-fpm defaults
-
-- name: start php-fpm
-  service: name=php-fpm state=started enabled=yes

@@ -16,11 +16,11 @@ case "$1" in
    $PHP_DIR/sbin/php-fpm
    ;;
  stop)
-   pkill php-fpm
+   killall php-fpm
    ;;
  restart)
-   pkill php-fpm
-   sleep 5
+   killall php-fpm
+   sleep 8 
    $PHP_DIR/sbin/php-fpm
    ;;
  *)

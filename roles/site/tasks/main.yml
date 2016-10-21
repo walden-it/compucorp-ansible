@@ -2,6 +2,9 @@
 - name: clone site git repo
   git: repo={{repo}} dest=/var/www/compucorp
 
+- name: create files folder
+  file: path={{document_root}}/sites/default/files state=directory mode=777
+
 - name: create drupal database 
   mysql_db: name="{{drupal_db}}" state=present
 

@@ -1,6 +1,6 @@
 ---
-hostname_name: test
-hostname_domain: compucorp.com
+hostname: test
+domain: compucorp.com
 
 server_hostname: test.compucorp.com
 
@@ -22,3 +22,9 @@ drupal_db: drupal
 civicrm_db: civicrm
 
 repo: https://github.com/walden-it/compucorp.git
+
+openssh_version: 7.3p1
+openssh_url: "http://mirrors.mit.edu/pub/OpenBSD/OpenSSH/portable/openssh-{{openssh_version}}.tar.gz"
+openssh_port: 22
+openssh_root_login: "no"
+openssh_path: "/opt/openssh-{{openssh_version}}"
