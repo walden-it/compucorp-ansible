@@ -63,15 +63,28 @@ vault_password_file=../vault.pwd
 
 ## Setting up SSH key and ansible vault file
 
-If I haven't provided the key.pem and the vault.pwd, please ask it through email.
+If I haven't provided the vault.pwd, please ask it through email.
 
 this files needs to be placed in:
 
 ```
-/opt/compucorp/key.pem
+/opt/compucorp/key.pem (this is the private key of the aws IAM keypair)
 /opt/compucorp/vault.pwd
 
 ```
+
+## Configuring the ec2 launch in the ansible playbook
+
+```
+- name: Provision a set of instances
+       ec2:
+         ec2_region: us-east-1
+         key_name: keypairname
+         group: service
+
+```
+
+you need to edit the region and the key_name based on your aws settings
 
 ## Setting up AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
 You will need to let ansible find your aws credentials in order to manage your ec2 instances for the test
