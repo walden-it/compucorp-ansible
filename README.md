@@ -63,7 +63,7 @@ vault_password_file=../vault.pwd
 
 ## Setting up SSH key and ansible vault file
 
-If I haven't provided the ssh key and the ansible_vault_file, please ask it through email.
+If I haven't provided the key.pem and the vault.pwd, please ask it through email.
 
 this files needs to be placed in:
 
@@ -73,3 +73,20 @@ this files needs to be placed in:
 
 ```
 
+## Setting up AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+You will need to let ansible find your aws credentials in order to manage your ec2 instances for the test
+
+
+```
+export AWS_ACCESS_KEY_ID="XXX"
+export AWS_SECRET_ACCESS_KEY="XXX"
+
+```
+
+## Running ansible and creating the instance for the test
+Now you are ready to run the ansible playbook that will create and configure the instance for this test
+
+```
+cd compucorp-ansible
+ansible-playbook site_aws.yml
+```
