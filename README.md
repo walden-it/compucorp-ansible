@@ -51,7 +51,7 @@ Now you will have a new directory:
 Look at ansible.cfg inside that directory:
 
 
-```yml
+```ini
 [defaults]
 private_key_file=../key.pem
 remote_user=ubuntu
@@ -60,3 +60,16 @@ host_key_checking=False
 vault_password_file=../vault.pwd
 
 ```
+
+## Setting up SSH key and ansible vault file
+
+If I haven't provided the ssh key and the ansible_vault_file, please ask it through email.
+
+this files needs to be placed in:
+
+```
+/opt/compucorp/key.pem
+/opt/compucorp/vault.pwd
+
+```
+
