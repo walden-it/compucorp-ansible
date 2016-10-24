@@ -119,7 +119,3 @@ http://test.compucorp.com
 and 
 login using the credentials provided through email
 
-
-
-A
-
