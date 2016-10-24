@@ -19,9 +19,6 @@
 - name: install openssh
   command: make install chdir=/opt/build/openssh-{{openssh_version}}
 
-- name: openssh configuration
-  template: src=sshd_config dest={{openssh_path}}/etc/sshd_config
-
 - name: openssh init file
   template: src=init dest=/etc/init.d/ssh mode=755
 
@@ -30,10 +27,11 @@
 
 - name: openssh init (activate)
   command: update-rc.d ssh defaults
+ 
+
+- name: openssh configuration
+  template: src=sshd_config dest={{openssh_path}}/etc/sshd_config
+  notify: restart ssh
 
 - name: unlock ubuntu user
   command: usermod -p '*' ubuntu
-
-#- name: restart openssh
-#  service: name=ssh state=restarted enabled=yes
-
