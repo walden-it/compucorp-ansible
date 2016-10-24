@@ -9,8 +9,10 @@ server {
     listen 443 default_server ssl;
     ssl_certificate /etc/nginx/ssl/test.compucorp.com.crt;
     ssl_certificate_key /etc/nginx/ssl/test.compucorp.com.key;
+    ssl_protocols TLSv1.1 Tlsv1.2;
+
     server_name  {{server_hostname}};
-    
+     
     access_log  /var/log/nginx/{{server_hostname}}.access.log;
     error_log /var/log/nginx/{{server_hostname}}.log;
  
