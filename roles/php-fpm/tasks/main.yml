@@ -27,6 +27,7 @@
 
 - name: expose_php=off
   lineinfile: dest={{php_path}}/etc/php-fpm.conf regexp=^php_flag[expose_php]= line=php_flag[expose_php]=off
+  notify: restart php-fpm
 
 - name: php-fpm init file
   template: src=init dest=/etc/init.d/php-fpm mode=755
