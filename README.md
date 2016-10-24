@@ -90,3 +90,36 @@ Now you are ready to run the ansible playbook that will create and configure the
 cd compucorp-ansible
 ansible-playbook site_aws.yml
 ```
+
+That will take a long while, as it needs to launch a fresh new ec2 instance, and configure the test site 
+
+## Setup local hosts file
+
+Once it is finished, you need to get the IP for the new instance by running:
+
+```
+./ec2.py --list|grep ec2_ip_address
+
+```
+
+Example Output:
+"ec2_ip_address": "54.161.67.61", 
+
+Add the following line to your hosts file (in linux: /etc/hosts)
+
+
+```
+54.161.67.61 test.compucorp.com
+
+```
+
+### Installation is done
+Now you need to point your browser to:
+http://test.compucorp.com
+and 
+login using the credentials provided through email
+
+
+
+A
+
