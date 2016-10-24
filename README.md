@@ -84,7 +84,7 @@ this files needs to be placed in:
 
 ```
 
-you need to edit the ec2_region and the key_name based on your aws settings
+you need to edit the group, ec2_region and the key_name based on your aws settings
 
 ## Setting up AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
 You will need to let ansible find your aws credentials in order to manage your ec2 instances for the test
