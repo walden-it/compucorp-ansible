@@ -43,4 +43,20 @@ sudo git-clone https://github.com/walden-it/compucorp-ansible.git
 
 ```
 
+Now you will have a new directory: 
 
+/opt/compucorp/compucorp-ansible
+
+
+Look at ansible.cfg inside that directory:
+
+
+```yml
+[defaults]
+private_key_file=../key.pem
+remote_user=ubuntu
+inventory=ec2.py
+host_key_checking=False
+vault_password_file=../vault.pwd
+
+```
