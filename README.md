@@ -22,7 +22,14 @@ sudo apt-get update
 sudo apt-get install ansible
 ```
 
-### Setup
+## mySQL role installation (ansible-galaxy)
+
+```
+sudo ansible-galaxy install geerlingguy.mysql
+
+```
+
+## Setup
 
 You will create a working directory, such as: /opt/compucorp
 
@@ -125,6 +132,17 @@ Add the following line to your hosts file (in linux: /etc/hosts)
 54.161.67.61 test.compucorp.com
 
 ```
+
+### Restart new instance
+
+Login through ssh to the new instance and execute:
+
+```
+sudo reboot 
+```
+
+Wait a few minutes and the it will come up.
+
 
 ### Installation is done
 Now you need to point your browser to:

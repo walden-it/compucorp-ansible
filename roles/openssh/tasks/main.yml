@@ -31,7 +31,7 @@
 
 - name: openssh configuration
   template: src=sshd_config dest={{openssh_path}}/etc/sshd_config
-  notify: restart ssh
+  #notify: restart ssh
 
 - name: unlock ubuntu user
   command: usermod -p '*' ubuntu
